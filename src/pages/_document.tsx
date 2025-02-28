@@ -1,4 +1,9 @@
-import { Html, Head, Main, NextScript } from "next/document";
+import { Head, Html, Main, NextScript } from "next/document";
+
+export const metadata = {
+  title: "My Dynamic Title",
+  description: "A description for the page",
+};
 
 export default function Document() {
   return (
