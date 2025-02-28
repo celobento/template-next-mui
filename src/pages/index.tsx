@@ -1,7 +1,8 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import Head from "next/head";
-import Header from "./components/Header";
-import SideMenu from "./components/SideMenu";
+import Header from "../components/Header";
+import Login from "../components/Login";
+import SideMenu from "../components/SideMenu";
 import Dashboard from "./dashboard";
 
 const geistSans = Geist({
@@ -29,6 +30,7 @@ export default function Home() {
       <Header />
       <SideMenu />
       <Dashboard />
+      <Login />
     </div>
   );
 }
