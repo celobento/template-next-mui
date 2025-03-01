@@ -1,7 +1,6 @@
 const SideMenu = () => {
   return (
     <>
-      <div>SideMenu</div>;
       <ul>
         <li>Analytics</li>
         <li>profile</li>
