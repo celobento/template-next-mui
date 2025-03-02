@@ -1,3 +1,5 @@
+import darkTheme from "@/theme/darkTheme";
+import lightTheme from "@/theme/lightTheme";
 import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
 import {
   createContext,
@@ -43,6 +45,22 @@ export function ThemeContextProvider({ children }: { children: ReactNode }) {
     [darkMode]
   );
 
+  const darkThemeChosen = useMemo(
+    () =>
+      createTheme({
+        ...darkTheme,
+      }),
+    [darkMode]
+  );
+
+  const lightThemeChosen = useMemo(
+    () =>
+      createTheme({
+        ...lightTheme,
+      }),
+    [darkMode]
+  );
+
   const toggleTheme = () => {
     setDarkMode((prev) => {
       localStorage.setItem("darkMode", !prev ? "true" : "false");
@@ -52,7 +70,7 @@ export function ThemeContextProvider({ children }: { children: ReactNode }) {
 
   return (
     <ThemeContext.Provider value={{ toggleTheme, darkMode }}>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={darkMode ? darkThemeChosen : lightThemeChosen}>
         <CssBaseline />
         {children}
       </ThemeProvider>
