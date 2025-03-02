@@ -1,8 +1,10 @@
 import { useSession } from "next-auth/react";
 import { Geist, Geist_Mono } from "next/font/google";
+import React from "react";
 import Header from "../components/Header";
 import SideMenu from "../components/SideMenu";
 import Dashboard from "./dashboard";
+import scss from "./Home.module.scss";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,19 +16,21 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export default function Home() {
+const Home: React.FC = () => {
   const { data: session } = useSession();
   return (
-    <div
-      className={`${geistSans.variable} ${geistMono.variable} grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]`}
-    >
-      <Header />
-      {session && (
-        <>
-          <SideMenu />
-          <Dashboard />
-        </>
-      )}
-    </div>
+    <>
+      <main className={scss.main}>
+        <Header />
+        {session && (
+          <>
+            <SideMenu />
+            <Dashboard />
+          </>
+        )}
+      </main>
+    </>
   );
-}
+};
+
+export default Home;

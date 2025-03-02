@@ -1,6 +1,6 @@
 import AdbIcon from "@mui/icons-material/Adb";
 import MenuIcon from "@mui/icons-material/Menu";
-import { Avatar } from "@mui/material";
+import { Avatar, Divider } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -13,6 +13,7 @@ import Tooltip from "@mui/material/Tooltip";
 import Typography from "@mui/material/Typography";
 import { signIn, signOut, useSession } from "next-auth/react";
 import * as React from "react";
+import DarkModeToggle from "../DarkMode/DarkModeToggle";
 
 const pages = ["Products", "Pricing", "Blog"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
@@ -63,7 +64,7 @@ const Header = () => {
               textDecoration: "none",
             }}
           >
-            LOGO
+            System-IT
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -117,7 +118,7 @@ const Header = () => {
               textDecoration: "none",
             }}
           >
-            LOGO
+            System-IT
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
@@ -130,6 +131,7 @@ const Header = () => {
               </Button>
             ))}
           </Box>
+          <DarkModeToggle />
           <Box sx={{ flexGrow: 0 }}>
             {!session ? (
               <Button color="inherit" onClick={() => signIn()}>
@@ -160,11 +162,14 @@ const Header = () => {
                 >
                   {settings.map((setting) =>
                     setting.startsWith("Logout") ? (
-                      <MenuItem key={setting} onClick={() => signOut()}>
-                        <Typography sx={{ textAlign: "center" }}>
-                          Logout
-                        </Typography>
-                      </MenuItem>
+                      <>
+                        <Divider />
+                        <MenuItem key={setting} onClick={() => signOut()}>
+                          <Typography sx={{ textAlign: "center" }}>
+                            Logout
+                          </Typography>
+                        </MenuItem>
+                      </>
                     ) : (
                       <MenuItem key={setting} onClick={handleCloseUserMenu}>
                         <Typography sx={{ textAlign: "center" }}>
