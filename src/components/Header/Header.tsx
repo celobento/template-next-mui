@@ -44,6 +44,15 @@ const Header = () => {
     setAnchorElUser(null);
   };
 
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
@@ -99,6 +108,36 @@ const Header = () => {
                   <Typography sx={{ textAlign: "center" }}>{page}</Typography>
                 </MenuItem>
               ))}
+              <Divider />
+              <Button
+                id="demo-positioned-button"
+                aria-controls={open ? "demo-positioned-menu" : undefined}
+                aria-haspopup="true"
+                aria-expanded={open ? "true" : undefined}
+                onClick={handleClick}
+                sx={{ color: "black", display: "block" }}
+              >
+                Admin
+              </Button>
+              <Menu
+                id="demo-positioned-menu"
+                aria-labelledby="demo-positioned-button"
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleClose}
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "left",
+                }}
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "left",
+                }}
+              >
+                <MenuItem onClick={handleClose}>Profile</MenuItem>
+                <MenuItem onClick={handleClose}>My account</MenuItem>
+                <MenuItem onClick={handleClose}>Logout</MenuItem>
+              </Menu>
             </Menu>
           </Box>
           <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
@@ -130,7 +169,37 @@ const Header = () => {
                 {page}
               </Button>
             ))}
+            <Button
+              id="demo-positioned-button"
+              aria-controls={open ? "demo-positioned-menu" : undefined}
+              aria-haspopup="true"
+              aria-expanded={open ? "true" : undefined}
+              onClick={handleClick}
+              sx={{ my: 2, color: "white", display: "block" }}
+            >
+              Admin
+            </Button>
+            <Menu
+              id="demo-positioned-menu"
+              aria-labelledby="demo-positioned-button"
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+              anchorOrigin={{
+                vertical: "top",
+                horizontal: "left",
+              }}
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "left",
+              }}
+            >
+              <MenuItem onClick={handleClose}>Profile</MenuItem>
+              <MenuItem onClick={handleClose}>My account</MenuItem>
+              <MenuItem onClick={handleClose}>Logout</MenuItem>
+            </Menu>
           </Box>
+
           <DarkModeToggle />
           <Box sx={{ flexGrow: 0 }}>
             {!session ? (
