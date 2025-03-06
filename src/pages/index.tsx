@@ -1,7 +1,6 @@
 import { useSession } from "next-auth/react";
 import { Geist, Geist_Mono } from "next/font/google";
 import React from "react";
-import Header from "../components/Header";
 import Dashboard from "./dashboard";
 import scss from "./Home.module.scss";
 
@@ -20,7 +19,6 @@ const Home: React.FC = () => {
   return (
     <>
       <main className={scss.main}>
-        <Header />
         {session && (
           <>
             <Dashboard />

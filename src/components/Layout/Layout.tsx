@@ -1,7 +1,7 @@
-import SideMenu from "@/components/SideMenu";
 import { Container } from "@mui/material";
 import { useSession } from "next-auth/react";
 import Head from "next/head";
+import Header from "../Header";
 import scss from "./Layout.module.scss";
 
 const Layout = (props: any) => {
@@ -16,8 +16,9 @@ const Layout = (props: any) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={scss.layout}>
+        <Header />
         <Container>
-          {session && <SideMenu />}
+          {/*{session && <SideMenu />*/}
           {props.children}
         </Container>
       </main>
